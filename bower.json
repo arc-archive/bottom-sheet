@@ -17,7 +17,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
     "iron-a11y-announcer": "PolymerElements/iron-a11y-announcer#^1.0.5",
-    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior#^1.8.6"
+    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior#^1.8.6",
+    "paper-styles": "PolymerElements/paper-styles#^1.1.4"
   },
   "devDependencies": {
     "iron-component-page": "polymerelements/iron-component-page#1.0.0",
