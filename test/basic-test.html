@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../iron-test-helpers/test-helpers.js"></script>
+    <script src="../../iron-test-helpers/mock-interactions.js"></script>
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../bottom-sheet.html">
+  </head>
+  <body>
+
+    <test-fixture id="basic">
+      <template>
+        <bottom-sheet></bottom-sheet>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="opened">
+      <template>
+        <bottom-sheet opened></bottom-sheet>
+      </template>
+    </test-fixture>
+
+    <script>
+    /* global suite, test, fixture, assert */
+    suite('basic', function() {
+      var sheet;
+
+      test('is hidden', function() {
+        sheet = fixture('basic');
+        assert.isFalse(sheet.opened, '`opened` is false');
+      });
+
+      test('is visible', function() {
+        sheet = fixture('opened');
+        assert.isTrue(sheet.opened, '`opened` is true');
+      });
+
+      test('show() will open bottom-sheet', function() {
+        sheet = fixture('basic');
+        sheet.open();
+        assert.isTrue(sheet.opened, '`opened` is true');
+      });
+
+      test('hide() will close bottom-sheet', function() {
+        sheet = fixture('opened');
+        sheet.close();
+        assert.isFalse(sheet.opened, '`opened` is true');
+      });
+
+      test('bottom-sheet fires opened event', function(done) {
+        sheet = fixture('opened');
+        sheet.addEventListener('iron-overlay-opened', function() {
+          done();
+        });
+      });
+      test('there is only 1 bottom-sheet opened', function() {
+        var sheet1 = fixture('basic');
+        var sheet2 = fixture('opened');
+        sheet2.open();
+        sheet1.open();
+        assert.isTrue(sheet1.opened, 'sheet1 is opened');
+        assert.isFalse(sheet2.opened, 'sheet2 is not opened');
+        sheet2.open();
+        assert.isFalse(sheet1.opened, 'sheet1 is now not opened');
+        assert.isTrue(sheet2.opened, 'sheet2 is now opened');
+      });
+    });
+    </script>
+
+  </body>
+</html>
