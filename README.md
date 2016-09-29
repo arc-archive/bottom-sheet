@@ -35,3 +35,4 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
 `--bottom-sheet-color` | The bottom-sheet color | `#323232`
+
