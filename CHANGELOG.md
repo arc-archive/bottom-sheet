@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/advanced-rest-client/bottom-sheet/compare/1.0.1...v1.0.3) (2016-10-06)
+
+
+### New
+
+* Added hero image ([3dbc9873a319397d383a159772bee5007f72f477](https://github.com/advanced-rest-client/bottom-sheet/commit/3dbc9873a319397d383a159772bee5007f72f477))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/advanced-rest-client/bottom-sheet/compare/1.0.1...v1.0.2) (2016-09-29)
 
