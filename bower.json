@@ -4,7 +4,11 @@
   "author": "The Advanced REST Client authors",
   "keywords": [
     "web-components",
-    "polymer"
+    "polymer",
+    "paper element",
+    "bottom sheet",
+    "menu",
+    "button"
   ],
   "private": true,
   "main": [
