@@ -1,3 +1,13 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/advanced-rest-client/bottom-sheet/compare/1.0.3...v1.0.4) (2016-11-20)
+
+
+### Update
+
+* Added new Travis configuration ([912d29dab2facfdb2b1b4ef19a7a8955cd2874ef](https://github.com/advanced-rest-client/bottom-sheet/commit/912d29dab2facfdb2b1b4ef19a7a8955cd2874ef))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/advanced-rest-client/bottom-sheet/compare/1.0.1...v1.0.3) (2016-10-06)
 
