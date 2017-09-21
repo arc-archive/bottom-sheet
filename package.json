@@ -1,1 +1,29 @@
-{"name":"bottom-sheet","version":"1.0.4","license":"LICENSE.md","description":"Bottom sheets slide up from the bottom of the screen to reveal more content.","devDependencies":{"polymer-cli":"^0.17.0"},"engines":{"node":">=0.10.0"},"private":false,"main":["bottom-sheet.html"],"author":"The Advanced REST Client authors","scripts":{"serve":"node_modules/.bin/polymer serve","lint":"node_modules/.bin/polymer lint bottom-sheet.html","test-sauce":"node_modules/.bin/polymer test --plugin sauce --job-name \"bottom-sheet:local-test\"","test":"node_modules/.bin/polymer test","deps":"npm install --quiet && bower install --quiet","update-deps":"npm update --quiet && bower update --quiet"},"repository":{"type":"git","url":"git://github.com/advanced-rest-client/bottom-sheet.git"}}
+{
+  "name": "bottom-sheet",
+  "version": "1.0.4",
+  "license": "LICENSE.md",
+  "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
+  "devDependencies": {
+    "polymer-cli": "^0.17.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "private": false,
+  "main": [
+    "bottom-sheet.html"
+  ],
+  "author": "The Advanced REST Client authors",
+  "scripts": {
+    "serve": "node_modules/.bin/polymer serve",
+    "lint": "node_modules/.bin/polymer lint bottom-sheet.html",
+    "test-sauce": "node_modules/.bin/polymer test --plugin sauce --job-name \"bottom-sheet:local-test\"",
+    "test": "node_modules/.bin/polymer test",
+    "deps": "npm install --quiet && bower install --quiet",
+    "update-deps": "npm update --quiet && bower update --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/advanced-rest-client/bottom-sheet.git"
+  }
+}
