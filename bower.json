@@ -2,9 +2,18 @@
   "name": "bottom-sheet",
   "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
   "author": "The Advanced REST Client authors",
-  "keywords": ["web-components", "polymer", "paper element", "bottom sheet", "menu", "button"],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "paper element",
+    "bottom sheet",
+    "menu",
+    "button"
+  ],
   "private": true,
-  "main": ["bottom-sheet.html"],
+  "main": [
+    "bottom-sheet.html"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:advanced-rest-client/bottom-sheet.git"
@@ -28,6 +37,12 @@
     "iron-icon": "PolymerElements/iron-icon#^1.0.10",
     "iron-icons": "PolymerElements/iron-icons#^1.1.3"
   },
-  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tasks"],
-  "version": "1.0.4"
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tasks"
+  ],
+  "version": "1.0.5"
 }
