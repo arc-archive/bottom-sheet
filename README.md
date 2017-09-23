@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/advanced-rest-client/bottom-sheet.svg?branch=master)](https://travis-ci.org/advanced-rest-client/bottom-sheet)  
+[![Build Status](https://travis-ci.org/advanced-rest-client/bottom-sheet.svg?branch=stage)](https://travis-ci.org/advanced-rest-client/bottom-sheet)  
 
 # bottom-sheet
 
