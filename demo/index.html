@@ -41,7 +41,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <h3>The `bottom-sheet`</h3>
     <demo-snippet>
       <template>
-        <bottom-sheet id="s1">
+        <bottom-sheet id="s1" no-padding>
           <paper-item>Action #1</paper-item>
           <paper-item>Action #2</paper-item>
           <paper-item>Action #3</paper-item>
@@ -58,7 +58,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <h3>Open with ...</h3>
     <demo-snippet>
       <template>
-        <bottom-sheet id="s2" class="center-bottom" label="Open with ...">
+        <bottom-sheet id="s2" class="center-bottom" label="Open with ..." no-padding>
           <paper-icon-item>
             <iron-icon src="inbox.png" item-icon></iron-icon>
             Inbox
@@ -83,7 +83,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-button raised id="b2">Open with ...</paper-button>
         <script>
           document.querySelector('#b2').addEventListener('tap', function() {
-            document.querySelector('#s2').open();
+            document.querySelector('#s2').opened = true;
+          });
+        </script>
+      </template>
+    </demo-snippet>
+
+
+    <h3>Scrollable content</h3>
+    <demo-snippet>
+      <template>
+        <bottom-sheet id="s3" class="center-bottom" label="Images (might take time to load)">
+          <template is="dom-repeat" id="t3">
+            <img src="[[item]]" />
+          </template>
+        </bottom-sheet>
+        <paper-button raised id="b3">Open</paper-button>
+        <script>
+          document.getElementById('b3').addEventListener('tap', function() {
+            var tpl = document.getElementById('t3');
+            if (!tpl.items) {
+              var imgs = [];
+              for (var i = 0; i < 15; i++) {
+                imgs.push('http://loremflickr.com/400/400/?random=' + i);
+              }
+              tpl.items = imgs;
+            }
+            document.getElementById('s3').opened = true;
           });
         </script>
       </template>

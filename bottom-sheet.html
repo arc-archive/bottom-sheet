@@ -115,9 +115,22 @@ Custom property | Description | Default
     [hidden] {
       display: none !important;
     }
+
+    .scrollable {
+      padding: 24px;
+      max-height: 100vh;
+      @apply(--layout-scroll);
+      @apply(--bottom-sheet-scrollable);
+    }
+
+    :host([no-padding]) .scrollable {
+      padding: 0;
+    }
     </style>
     <label hidden$="[[!label]]">[[label]]</label>
-    <content></content>
+    <div id="scrollable" class="scrollable">
+      <content></content>
+    </div>
   </template>
   <script>
   (function() {
@@ -148,6 +161,24 @@ Custom property | Description | Default
           type: String,
           value: ''
         },
+        sizingTarget: {
+          type: Object,
+          value: function() {
+            return this.$.scrollable;
+          }
+        },
+        // If set the padding won't be added to the scrollable element.
+        noPadding: {
+          type: Boolean,
+          reflectToAttribute: true
+        }
+      },
+
+      /**
+       * Returns the scrolling element.
+       */
+      get scrollTarget() {
+        return this.$.scrollable;
       },
 
       created: function() {
