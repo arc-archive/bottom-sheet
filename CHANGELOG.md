@@ -1,3 +1,17 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/advanced-rest-client/bottom-sheet/compare/1.0.5...1.1.1) (2017-10-03)
+
+
+### New
+
+* Added support for scrollable content. ([ef97ff907f1c6f755c03f447498ab3717bad8e59](https://github.com/advanced-rest-client/bottom-sheet/commit/ef97ff907f1c6f755c03f447498ab3717bad8e59))
+
+### Update
+
+* Changed testing to new model. ([6b4b27f8e7422f5ea17daead83581b95448069f3](https://github.com/advanced-rest-client/bottom-sheet/commit/6b4b27f8e7422f5ea17daead83581b95448069f3))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/advanced-rest-client/bottom-sheet/compare/1.0.3...1.0.5) (2017-09-23)
 
