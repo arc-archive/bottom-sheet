@@ -1,3 +1,9 @@
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/advanced-rest-client/bottom-sheet/compare/1.1.1...1.1.2) (2017-10-03)
+
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/advanced-rest-client/bottom-sheet/compare/1.0.5...1.1.1) (2017-10-03)
 
