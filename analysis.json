@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "Material design: [Bottom sheets](https://material.google.com/components/bottom-sheets.html#)\n\n# `<bottom-sheet>`\nBottom sheets slide up from the bottom of the screen to reveal more content.\n\n### Example\n```\n<bottom-sheet>\n  <paper-icon-item>\n    <iron-icon src=\"inbox.png\" item-icon></iron-icon>\n    Inbox\n  </paper-icon-item>\n  <paper-icon-item>\n    <iron-icon src=\"keep.png\" item-icon></iron-icon>\n    Keep\n  </paper-icon-item>\n  <paper-icon-item>\n    <iron-icon src=\"hangouts.png\" item-icon></iron-icon>\n    Hangouts\n  </paper-icon-item>\n</bottom-sheet>\n```\n\n### Positioning\nUse the `fit-bottom` class to position the bar at the bottom of the app and with full width;\n\nUse `center-bottom` class to display the bar at the bottom centered on a page.\n\n\n### Styling\n`<bottom-sheet>` provides the following custom properties and mixins for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`\n`--bottom-sheet-color` | The bottom-sheet color | `#323232`",
+      "summary": "",
+      "path": "bottom-sheet.html",
+      "properties": [
+        {
+          "name": "scrollTarget",
+          "type": "?",
+          "description": "Returns the scrolling element.\n       ",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 179,
+              "column": 6
+            },
+            "end": {
+              "line": 181,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        },
+        {
+          "name": "fitInto",
+          "type": "Object | null | undefined",
+          "description": "The element to fit `this` into.\nOverridden from `Polymer.IronFitBehavior`.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 10
+            },
+            "end": {
+              "line": 155,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_onFitIntoChanged\"",
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "label",
+          "type": "string | null | undefined",
+          "description": "The label of the bottom sheet.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 160,
+              "column": 10
+            },
+            "end": {
+              "line": 163,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "sizingTarget",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 165,
+              "column": 10
+            },
+            "end": {
+              "line": 167,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "noPadding",
+          "type": "boolean | null | undefined",
+          "description": "If set the padding won't be added to the scrollable element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 169,
+              "column": 10
+            },
+            "end": {
+              "line": 172,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 188,
+              "column": 6
+            },
+            "end": {
+              "line": 195,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 197,
+              "column": 6
+            },
+            "end": {
+              "line": 200,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_openedChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 202,
+              "column": 6
+            },
+            "end": {
+              "line": 219,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_renderOpened",
+          "description": "Overridden from `IronOverlayBehavior`.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 224,
+              "column": 6
+            },
+            "end": {
+              "line": 226,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_renderClosed",
+          "description": "Overridden from `IronOverlayBehavior`.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 230,
+              "column": 6
+            },
+            "end": {
+              "line": 232,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onFitIntoChanged",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 236,
+              "column": 6
+            },
+            "end": {
+              "line": 238,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "fitInto"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "__onTransitionEnd",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 240,
+              "column": 6
+            },
+            "end": {
+              "line": 252,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 143,
+          "column": 4
+        },
+        "end": {
+          "line": 259,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "BottomSheet",
+      "attributes": [
+        {
+          "name": "fit-into",
+          "description": "The element to fit `this` into.\nOverridden from `Polymer.IronFitBehavior`.",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 10
+            },
+            "end": {
+              "line": 155,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "label",
+          "description": "The label of the bottom sheet.",
+          "sourceRange": {
+            "start": {
+              "line": 160,
+              "column": 10
+            },
+            "end": {
+              "line": 163,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "sizing-target",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 165,
+              "column": 10
+            },
+            "end": {
+              "line": 167,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "no-padding",
+          "description": "If set the padding won't be added to the scrollable element.",
+          "sourceRange": {
+            "start": {
+              "line": 169,
+              "column": 10
+            },
+            "end": {
+              "line": 172,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "'iron-announce'",
+          "description": "Fired when `bottom-sheet` is opened.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [
+        {
+          "description": "",
+          "name": "",
+          "range": {
+            "start": {
+              "line": 136,
+              "column": 6
+            },
+            "end": {
+              "line": 136,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "tagname": "bottom-sheet"
+    }
+  ]
+}
