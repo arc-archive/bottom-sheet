@@ -1,6 +1,6 @@
 <!--
 @license
-Copyright 2016 The Advanced REST Client authors
+Copyright 2018 The Advanced REST Client authors
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this file except in compliance with the License. You may obtain a copy of
 the License at
@@ -11,8 +11,10 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 -->
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/elements/dom-if.html">
 <link rel="import" href="../iron-a11y-announcer/iron-a11y-announcer.html">
+<link rel="import" href="../polymer/lib/legacy/class.html">
 <link rel="import" href="../iron-overlay-behavior/iron-overlay-behavior.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
 <!--
@@ -53,10 +55,11 @@ Custom property | Description | Default
 `--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
 `--bottom-sheet-color` | The bottom-sheet color | `#323232`
 
-@group UI Elements
-@element bottom-sheet
+@customElement
+@polymer
 @demo demo/index.html
-@hero hero.svg
+@memberof UiElements
+@appliesMixin Polymer.IronOverlayBehavior
 -->
 <dom-module id="bottom-sheet">
   <template>
@@ -81,7 +84,7 @@ Custom property | Description | Default
       opacity: 0;
       -webkit-transform: translateY(100px);
       transform: translateY(100px);
-      @apply(--paper-font-common-base);
+      @apply --arc-font-common-base;
     }
 
     :host(.fit-bottom) {
@@ -102,13 +105,13 @@ Custom property | Description | Default
     }
 
     label {
-      @apply(--paper-font-caption);
+      @apply --arc-font-caption;
       height: 48px;
       color: rgba(0, 0, 0, 0.54);
       display: block;
       font-size: 15px;
-      @apply(--layout-horizontal);
-      @apply(--layout-center);
+      @apply --layout-horizontal;
+      @apply --layout-center;
       padding-left: 16px;
     }
 
@@ -119,111 +122,123 @@ Custom property | Description | Default
     .scrollable {
       padding: 24px;
       max-height: 100vh;
-      @apply(--layout-scroll);
-      @apply(--bottom-sheet-scrollable);
+      @apply --layout-scroll;
+      @apply --bottom-sheet-scrollable;
     }
 
     :host([no-padding]) .scrollable {
       padding: 0;
     }
     </style>
-    <label hidden$="[[!label]]">[[label]]</label>
+    <template is="dom-if" if="[[label]]">
+      <label>[[label]]</label>
+    </template>
     <div id="scrollable" class="scrollable">
-      <content></content>
+      <slot></slot>
     </div>
   </template>
   <script>
   (function() {
     // Keeps track of the toast currently opened.
-    var currentSheet = null;
-    Polymer({
-      is: 'bottom-sheet',
+    let currentSheet;
+    class BottomSheet extends Polymer.mixinBehaviors([Polymer.IronOverlayBehavior], Polymer.Element) {
+      static get is() { return 'bottom-sheet'; }
+      static get properties() {
+        return {
+          /**
+           * The element to fit `this` into.
+           * Overridden from `Polymer.IronFitBehavior`.
+           */
+          fitInto: {
+            type: Object,
+            value: window,
+            observer: '_onFitIntoChanged'
+          },
 
-      behaviors: [
-        Polymer.IronOverlayBehavior
-      ],
+          /**
+           * The label of the bottom sheet.
+           */
+          label: {
+            type: String,
+            value: ''
+          },
 
-      properties: {
-        /**
-         * The element to fit `this` into.
-         * Overridden from `Polymer.IronFitBehavior`.
-         */
-        fitInto: {
-          type: Object,
-          value: window,
-          observer: '_onFitIntoChanged'
-        },
-
-        /**
-         * The label of the bottom sheet.
-         */
-        label: {
-          type: String,
-          value: ''
-        },
-        sizingTarget: {
-          type: Object,
-          value: function() {
-            return this.$.scrollable;
+          sizingTarget: {
+            type: Object
+          },
+          // If set the padding won't be added to the scrollable element.
+          noPadding: {
+            type: Boolean,
+            reflectToAttribute: true
           }
-        },
-        // If set the padding won't be added to the scrollable element.
-        noPadding: {
-          type: Boolean,
-          reflectToAttribute: true
-        }
-      },
+        };
+      }
 
       /**
        * Returns the scrolling element.
        */
       get scrollTarget() {
         return this.$.scrollable;
-      },
+      }
 
-      created: function() {
-        // this._autoClose = null;
+      constructor() {
+        super();
+        this.__onTransitionEnd = this.__onTransitionEnd.bind(this);
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
         Polymer.IronA11yAnnouncer.requestAvailability();
-      },
+        this.addEventListener('transitionend', this.__onTransitionEnd);
+        if (!this.sizingTarget) {
+          this.sizingTarget = this.$.scrollable;
+        }
+      }
 
-      listeners: {
-        'transitionend': '__onTransitionEnd'
-      },
+      disconnectedCallback() {
+        super.disconnectedCallback();
+        this.removeEventListener('transitionend', this.__onTransitionEnd);
+      }
 
-      _openedChanged: function() {
+      _openedChanged() {
         if (this.opened) {
           if (currentSheet && currentSheet !== this) {
             currentSheet.close();
           }
           currentSheet = this;
-          this.fire('iron-announce', {
-            text: 'Menu opened'
-          });
+          this.dispatchEvent(new CustomEvent('iron-announce', {
+            bubbles: true,
+            composed: true,
+            detail: {
+              text: 'Menu opened'
+            }
+          }));
         } else if (currentSheet === this) {
           currentSheet = null;
         }
         Polymer.IronOverlayBehaviorImpl._openedChanged.apply(this, arguments);
-      },
+      }
 
       /**
        * Overridden from `IronOverlayBehavior`.
        */
-      _renderOpened: function() {
+      _renderOpened() {
         this.classList.add('bottom-sheet-open');
-      },
+      }
       /**
        * Overridden from `IronOverlayBehavior`.
        */
-      _renderClosed: function() {
+      _renderClosed() {
         this.classList.remove('bottom-sheet-open');
-      },
+      }
       /**
        * @private
        */
-      _onFitIntoChanged: function(fitInto) {
+      _onFitIntoChanged(fitInto) {
         this.positionTarget = fitInto;
-      },
-      __onTransitionEnd: function(e) {
+      }
+
+      __onTransitionEnd(e) {
         // there are different transitions that are happening when opening and
         // closing the toast. The last one so far is for `opacity`.
         // This marks the end of the transition, so we check for this to determine if this
@@ -235,14 +250,15 @@ Custom property | Description | Default
             this._finishRenderClosed();
           }
         }
-      },
+      }
       /**
        * Fired when `bottom-sheet` is opened.
        *
        * @event 'iron-announce'
        * @param {{text: string}} detail Contains text that will be announced.
        */
-    });
+    }
+    window.customElements.define(BottomSheet.is, BottomSheet);
   })();
   </script>
 </dom-module>
