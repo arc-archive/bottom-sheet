@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>bottom-sheet test</title>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../bottom-sheet.html">
+</head>
+<body>
+  <test-fixture id="Basic">
+    <template>
+      <bottom-sheet></bottom-sheet>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="Opened">
+    <template>
+      <bottom-sheet opened></bottom-sheet>
+    </template>
+  </test-fixture>
+
+  <script>
+  suite('bottom-sheet', () => {
+    let sheet;
+
+    test('is hidden', function() {
+      sheet = fixture('Basic');
+      assert.isFalse(sheet.opened, '`opened` is false');
+    });
+
+    test('is visible', function() {
+      sheet = fixture('Opened');
+      assert.isTrue(sheet.opened, '`opened` is true');
+    });
+
+    test('show() will open bottom-sheet', function() {
+      sheet = fixture('Basic');
+      sheet.open();
+      assert.isTrue(sheet.opened, '`opened` is true');
+    });
+
+    test('hide() will close bottom-sheet', function() {
+      sheet = fixture('Opened');
+      sheet.close();
+      assert.isFalse(sheet.opened, '`opened` is true');
+    });
+
+    test('bottom-sheet fires opened event', function(done) {
+      sheet = fixture('Opened');
+      sheet.addEventListener('iron-overlay-opened', function() {
+        done();
+      });
+    });
+
+    test('there is only 1 bottom-sheet opened', function() {
+      const sheet1 = fixture('Basic');
+      const sheet2 = fixture('Opened');
+      sheet2.open();
+      sheet1.open();
+      assert.isTrue(sheet1.opened, 'sheet1 is opened');
+      assert.isFalse(sheet2.opened, 'sheet2 is not opened');
+      sheet2.open();
+      assert.isFalse(sheet1.opened, 'sheet1 is now not opened');
+      assert.isTrue(sheet2.opened, 'sheet2 is now opened');
+    });
+  });
+  </script>
+</body>
+</html>
