@@ -1,10 +1,10 @@
 {
   "name": "@advanced-rest-client/bottom-sheet",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "Apache-2.0",
   "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
   "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.1.1"
+    "@polymer/gen-typescript-declarations": "^1.5.1"
   },
   "private": false,
   "main": "bottom-sheet.html",
