@@ -65,6 +65,27 @@
       assert.isFalse(sheet1.opened, 'sheet1 is now not opened');
       assert.isTrue(sheet2.opened, 'sheet2 is now opened');
     });
+
+    test('scrollTarget returns the target', (done) => {
+      sheet = fixture('Basic');
+      flush(() => {
+        assert.ok(sheet.scrollTarget);
+        done();
+      });
+    });
+
+    test('_renderOpened() adds bottom-sheet-open class', () => {
+      sheet = fixture('Basic');
+      sheet._renderOpened();
+      assert.isTrue(sheet.classList.contains('bottom-sheet-open'));
+    });
+
+    test('_renderClosed() removes bottom-sheet-open class', () => {
+      sheet = fixture('Basic');
+      sheet.className = 'bottom-sheet-open';
+      sheet._renderClosed();
+      assert.isFalse(sheet.classList.contains('bottom-sheet-open'));
+    });
   });
   </script>
 </body>
