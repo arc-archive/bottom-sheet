@@ -1,6 +1,6 @@
 {
   "name": "@advanced-rest-client/bottom-sheet",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": "Apache-2.0",
   "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
   "devDependencies": {

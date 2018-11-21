@@ -17,53 +17,7 @@ the License.
 <link rel="import" href="../polymer/lib/legacy/class.html">
 <link rel="import" href="../iron-overlay-behavior/iron-overlay-behavior.html">
 <link rel="import" href="../paper-styles/paper-styles.html">
-<!--
-Material design: [Bottom sheets](https://material.google.com/components/bottom-sheets.html#)
 
-# `<bottom-sheet>`
-Bottom sheets slide up from the bottom of the screen to reveal more content.
-
-### Example
-```
-<bottom-sheet>
-  <paper-icon-item>
-    <iron-icon src="inbox.png" item-icon></iron-icon>
-    Inbox
-  </paper-icon-item>
-  <paper-icon-item>
-    <iron-icon src="keep.png" item-icon></iron-icon>
-    Keep
-  </paper-icon-item>
-  <paper-icon-item>
-    <iron-icon src="hangouts.png" item-icon></iron-icon>
-    Hangouts
-  </paper-icon-item>
-</bottom-sheet>
-```
-
-### Positioning
-Use the `fit-bottom` class to position the bar at the bottom of the app and with full width;
-
-Use `center-bottom` class to display the bar at the bottom centered on a page.
-
-
-### Styling
-`<bottom-sheet>` provides the following custom properties and mixins for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
-`--bottom-sheet-color` | The bottom-sheet color | `#323232`
-`--bottom-sheet-max-width` | Max width of the element | ``
-`--bottom-sheet-max-height` | Max heigth of the element | ``
-`--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
-
-@customElement
-@polymer
-@demo demo/index.html
-@memberof UiElements
-@appliesMixin Polymer.IronOverlayBehavior
--->
 <dom-module id="bottom-sheet">
   <template>
     <style>
@@ -77,7 +31,7 @@ Custom property | Description | Default
       bottom: 0px;
       left: 0px;
       box-sizing: border-box;
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+      box-shadow: var(--bottom-sheet-box-shadow, 0 2px 5px 0 rgba(0, 0, 0, 0.26));
       border-radius: 2px;
       margin: 0 12px;
       font-size: 14px;
@@ -146,6 +100,57 @@ Custom property | Description | Default
   (function() {
     // Keeps track of the toast currently opened.
     let currentSheet;
+    /**
+     * Material design: [Bottom sheets](https://material.google.com/components/bottom-sheets.html#)
+     *
+     * # `<bottom-sheet>`
+     *
+     * Bottom sheets slide up from the bottom of the screen to reveal more content.
+     *
+     * ### Example
+     *
+     * ```html
+     * <bottom-sheet>
+     *    <paper-icon-item>
+     *      <iron-icon src="inbox.png" item-icon></iron-icon>
+     *      Inbox
+     *    </paper-icon-item>
+     *    <paper-icon-item>
+     *      <iron-icon src="keep.png" item-icon></iron-icon>
+     *      Keep
+     *    </paper-icon-item>
+     *    <paper-icon-item>
+     *      <iron-icon src="hangouts.png" item-icon></iron-icon>
+     *      Hangouts
+     *    </paper-icon-item>
+     *  </bottom-sheet>
+     * ```
+     *
+     * ### Positioning
+     *
+     * Use the `fit-bottom` class to position the bar at the bottom of the app and with full width;
+     *
+     * Use `center-bottom` class to display the bar at the bottom centered on a page.
+     *
+     * ### Styling
+     *
+     * `<bottom-sheet>` provides the following custom properties and mixins for styling:
+     *
+     * Custom property | Description | Default
+     * ----------------|-------------|----------
+     * `--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
+     * `--bottom-sheet-color` | The bottom-sheet color | `#323232`
+     * `--bottom-sheet-max-width` | Max width of the element | ``
+     * `--bottom-sheet-max-height` | Max heigth of the element | ``
+     * `--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
+     * `--bottom-sheet-box-shadow` | Box shaddow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     * @memberof UiElements
+     * @appliesMixin Polymer.IronOverlayBehavior
+     */
     class BottomSheet extends Polymer.mixinBehaviors([Polymer.IronOverlayBehavior], Polymer.Element) {
       static get is() {
         return 'bottom-sheet';
@@ -177,7 +182,12 @@ Custom property | Description | Default
           noPadding: {
             type: Boolean,
             reflectToAttribute: true
-          }
+          },
+          /**
+           * True if the overlay is currently displayed.
+           */
+          opened:
+              {observer: '_openedChanged', type: Boolean, value: false, notify: true}
         };
       }
 
@@ -240,6 +250,7 @@ Custom property | Description | Default
       }
       /**
        * @private
+       * @param {Element} fitInto
        */
       _onFitIntoChanged(fitInto) {
         this.positionTarget = fitInto;

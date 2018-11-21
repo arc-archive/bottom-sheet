@@ -15,86 +15,100 @@
 /// <reference path="../iron-overlay-behavior/iron-overlay-behavior.d.ts" />
 /// <reference path="../paper-styles/paper-styles.d.ts" />
 
-/**
- * Material design: [Bottom sheets](https://material.google.com/components/bottom-sheets.html#)
- *
- * # `<bottom-sheet>`
- * Bottom sheets slide up from the bottom of the screen to reveal more content.
- *
- * ### Example
- * ```
- * <bottom-sheet>
- *   <paper-icon-item>
- *     <iron-icon src="inbox.png" item-icon></iron-icon>
- *     Inbox
- *   </paper-icon-item>
- *   <paper-icon-item>
- *     <iron-icon src="keep.png" item-icon></iron-icon>
- *     Keep
- *   </paper-icon-item>
- *   <paper-icon-item>
- *     <iron-icon src="hangouts.png" item-icon></iron-icon>
- *     Hangouts
- *   </paper-icon-item>
- * </bottom-sheet>
- * ```
- *
- * ### Positioning
- * Use the `fit-bottom` class to position the bar at the bottom of the app and with full width;
- *
- * Use `center-bottom` class to display the bar at the bottom centered on a page.
- *
- *
- * ### Styling
- * `<bottom-sheet>` provides the following custom properties and mixins for styling:
- *
- * Custom property | Description | Default
- * ----------------|-------------|----------
- * `--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
- * `--bottom-sheet-color` | The bottom-sheet color | `#323232`
- * `--bottom-sheet-max-width` | Max width of the element | ``
- * `--bottom-sheet-max-height` | Max heigth of the element | ``
- * `--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
- */
-declare class BottomSheet {
+declare namespace UiElements {
 
   /**
-   * Returns the scrolling element.
-   *        
+   * Material design: [Bottom sheets](https://material.google.com/components/bottom-sheets.html#)
+   *
+   * # `<bottom-sheet>`
+   *
+   * Bottom sheets slide up from the bottom of the screen to reveal more content.
+   *
+   * ### Example
+   *
+   * ```html
+   * <bottom-sheet>
+   *    <paper-icon-item>
+   *      <iron-icon src="inbox.png" item-icon></iron-icon>
+   *      Inbox
+   *    </paper-icon-item>
+   *    <paper-icon-item>
+   *      <iron-icon src="keep.png" item-icon></iron-icon>
+   *      Keep
+   *    </paper-icon-item>
+   *    <paper-icon-item>
+   *      <iron-icon src="hangouts.png" item-icon></iron-icon>
+   *      Hangouts
+   *    </paper-icon-item>
+   *  </bottom-sheet>
+   * ```
+   *
+   * ### Positioning
+   *
+   * Use the `fit-bottom` class to position the bar at the bottom of the app and with full width;
+   *
+   * Use `center-bottom` class to display the bar at the bottom centered on a page.
+   *
+   * ### Styling
+   *
+   * `<bottom-sheet>` provides the following custom properties and mixins for styling:
+   *
+   * Custom property | Description | Default
+   * ----------------|-------------|----------
+   * `--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
+   * `--bottom-sheet-color` | The bottom-sheet color | `#323232`
+   * `--bottom-sheet-max-width` | Max width of the element | ``
+   * `--bottom-sheet-max-height` | Max heigth of the element | ``
+   * `--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
+   * `--bottom-sheet-box-shadow` | Box shaddow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
    */
-  readonly scrollTarget: any;
+  class BottomSheet extends
+    Polymer.IronOverlayBehavior(
+    Object) {
 
-  /**
-   * The element to fit `this` into.
-   * Overridden from `Polymer.IronFitBehavior`.
-   */
-  fitInto: object|null|undefined;
+    /**
+     * Returns the scrolling element.
+     *        
+     */
+    readonly scrollTarget: any;
 
-  /**
-   * The label of the bottom sheet.
-   */
-  label: string|null|undefined;
-  sizingTarget: object|null|undefined;
+    /**
+     * The element to fit `this` into.
+     * Overridden from `Polymer.IronFitBehavior`.
+     */
+    fitInto: object|null|undefined;
 
-  /**
-   * If set the padding won't be added to the scrollable element.
-   */
-  noPadding: boolean|null|undefined;
-  connectedCallback(): void;
-  disconnectedCallback(): void;
-  _openedChanged(): void;
+    /**
+     * The label of the bottom sheet.
+     */
+    label: string|null|undefined;
+    sizingTarget: object|null|undefined;
 
-  /**
-   * Overridden from `IronOverlayBehavior`.
-   */
-  _renderOpened(): void;
+    /**
+     * If set the padding won't be added to the scrollable element.
+     */
+    noPadding: boolean|null|undefined;
 
-  /**
-   * Overridden from `IronOverlayBehavior`.
-   */
-  _renderClosed(): void;
+    /**
+     * True if the overlay is currently displayed.
+     */
+    opened: boolean|null|undefined;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    _openedChanged(): void;
+
+    /**
+     * Overridden from `IronOverlayBehavior`.
+     */
+    _renderOpened(): void;
+
+    /**
+     * Overridden from `IronOverlayBehavior`.
+     */
+    _renderClosed(): void;
+  }
 }
 
 interface HTMLElementTagNameMap {
-  "bottom-sheet": BottomSheet;
+  "bottom-sheet": UiElements.BottomSheet;
 }
