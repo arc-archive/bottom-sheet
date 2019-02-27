@@ -1,25 +1,59 @@
 {
+  "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "paper element",
+    "bottom sheet",
+    "menu",
+    "button"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/advanced-rest-client/bottom-sheet.git"
+  },
   "name": "@advanced-rest-client/bottom-sheet",
   "version": "2.0.2",
   "license": "Apache-2.0",
-  "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
   "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.5.1"
+    "@polymer/gen-typescript-declarations": "^1.5.1",
+    "@polymer/iron-component-page": "^4.0.0",
+    "@polymer/iron-demo-helpers": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-test-helpers": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/paper-item": "^3.0.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "wct-browser-legacy": "^1.0.1"
   },
-  "private": false,
-  "main": "bottom-sheet.html",
+  "main": "bottom-sheet.js",
   "scripts": {
     "lint": "polymer lint bottom-sheet.html",
     "test-sauce": "polymer test --plugin sauce --job-name \"bottom-sheet:local-test\"",
     "test": "polymer test --plugin local",
     "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/advanced-rest-client/bottom-sheet.git"
-  },
   "authors": [
     "Pawel Psztyc",
     "The Advanced REST client authors <arc@mulesoft.com>"
-  ]
+  ],
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0"
+  },
+  "contributors": [
+    "Pawel Psztyc",
+    "The Advanced REST Client authors"
+  ],
+  "dependencies": {
+    "@polymer/iron-a11y-announcer": "^3.0.0",
+    "@polymer/iron-overlay-behavior": "^3.0.0",
+    "@polymer/neon-animation": "^3.0.1",
+    "@polymer/paper-styles": "^3.0.0",
+    "@polymer/polymer": "^3.0.0",
+    "web-animations-js": "^2.3.1"
+  }
 }

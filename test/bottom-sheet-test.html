@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
   <title>bottom-sheet test</title>
-  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
-  <link rel="import" href="../bottom-sheet.html">
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../../wct-browser-legacy/browser.js"></script>
+  <script type="module" src="../bottom-sheet.js"></script>
 </head>
 <body>
   <test-fixture id="Basic">
@@ -23,70 +23,71 @@
 
   <script>
   suite('bottom-sheet', () => {
-    let sheet;
+  <script type="module">
+import '../bottom-sheet.js';
+suite('bottom-sheet', () => {
+  let sheet;
 
-    test('is hidden', function() {
-      sheet = fixture('Basic');
-      assert.isFalse(sheet.opened, '`opened` is false');
-    });
+  test('is hidden', function() {
+    sheet = fixture('Basic');
+    assert.isFalse(sheet.opened, '`opened` is false');
+  });
 
-    test('is visible', function() {
-      sheet = fixture('Opened');
-      assert.isTrue(sheet.opened, '`opened` is true');
-    });
+  test('is visible', function() {
+    sheet = fixture('Opened');
+    assert.isTrue(sheet.opened, '`opened` is true');
+  });
 
-    test('show() will open bottom-sheet', function() {
-      sheet = fixture('Basic');
-      sheet.open();
-      assert.isTrue(sheet.opened, '`opened` is true');
-    });
+  test('show() will open bottom-sheet', function() {
+    sheet = fixture('Basic');
+    sheet.open();
+    assert.isTrue(sheet.opened, '`opened` is true');
+  });
 
-    test('hide() will close bottom-sheet', function() {
-      sheet = fixture('Opened');
-      sheet.close();
-      assert.isFalse(sheet.opened, '`opened` is true');
-    });
+  test('hide() will close bottom-sheet', function() {
+    sheet = fixture('Opened');
+    sheet.close();
+    assert.isFalse(sheet.opened, '`opened` is true');
+  });
 
-    test('bottom-sheet fires opened event', function(done) {
-      sheet = fixture('Opened');
-      sheet.addEventListener('iron-overlay-opened', function() {
-        done();
-      });
-    });
-
-    test('there is only 1 bottom-sheet opened', function() {
-      const sheet1 = fixture('Basic');
-      const sheet2 = fixture('Opened');
-      sheet2.open();
-      sheet1.open();
-      assert.isTrue(sheet1.opened, 'sheet1 is opened');
-      assert.isFalse(sheet2.opened, 'sheet2 is not opened');
-      sheet2.open();
-      assert.isFalse(sheet1.opened, 'sheet1 is now not opened');
-      assert.isTrue(sheet2.opened, 'sheet2 is now opened');
-    });
-
-    test('scrollTarget returns the target', (done) => {
-      sheet = fixture('Basic');
-      flush(() => {
-        assert.ok(sheet.scrollTarget);
-        done();
-      });
-    });
-
-    test('_renderOpened() adds bottom-sheet-open class', () => {
-      sheet = fixture('Basic');
-      sheet._renderOpened();
-      assert.isTrue(sheet.classList.contains('bottom-sheet-open'));
-    });
-
-    test('_renderClosed() removes bottom-sheet-open class', () => {
-      sheet = fixture('Basic');
-      sheet.className = 'bottom-sheet-open';
-      sheet._renderClosed();
-      assert.isFalse(sheet.classList.contains('bottom-sheet-open'));
+  test('bottom-sheet fires opened event', function(done) {
+    sheet = fixture('Opened');
+    sheet.addEventListener('iron-overlay-opened', function() {
+      done();
     });
   });
-  </script>
-</body>
-</html>
+
+  test('there is only 1 bottom-sheet opened', function() {
+    const sheet1 = fixture('Basic');
+    const sheet2 = fixture('Opened');
+    sheet2.open();
+    sheet1.open();
+    assert.isTrue(sheet1.opened, 'sheet1 is opened');
+    assert.isFalse(sheet2.opened, 'sheet2 is not opened');
+    sheet2.open();
+    assert.isFalse(sheet1.opened, 'sheet1 is now not opened');
+    assert.isTrue(sheet2.opened, 'sheet2 is now opened');
+  });
+
+  test('scrollTarget returns the target', (done) => {
+    sheet = fixture('Basic');
+    flush(() => {
+      assert.ok(sheet.scrollTarget);
+      done();
+    });
+  });
+
+  test('_renderOpened() adds bottom-sheet-open class', () => {
+    sheet = fixture('Basic');
+    sheet._renderOpened();
+    assert.isTrue(sheet.classList.contains('bottom-sheet-open'));
+  });
+
+  test('_renderClosed() removes bottom-sheet-open class', () => {
+    sheet = fixture('Basic');
+    sheet.className = 'bottom-sheet-open';
+    sheet._renderClosed();
+    assert.isFalse(sheet.classList.contains('bottom-sheet-open'));
+  });
+});
+</script>
