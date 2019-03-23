@@ -12,23 +12,14 @@
   <script type="module" src="../../../@polymer/paper-button/paper-button.js"></script>
   <script type="module" src="../../../@polymer/iron-icon/iron-icon.js"></script>
   <script type="module" src="../bottom-sheet.js"></script>
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<custom-style>
+  <custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
-  </custom-style>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>
+  </custom-style>
 </head>
 <body unresolved="">
-  <script type="module">
-const $_documentContainer = document.createElement('template');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-    <h3>The \`bottom-sheet\`</h3>
+  <div class="vertical-section-container centered">
+    <h3>The `bottom-sheet`</h3>
     <demo-snippet>
       <template>
         <bottom-sheet id="s1" no-padding="">
@@ -41,7 +32,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
           document.querySelector('#b1').addEventListener('click', function() {
             document.querySelector('#s1').open();
           });
-        &lt;/script>
+        </script>
       </template>
     </demo-snippet>
 
@@ -75,7 +66,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
           document.querySelector('#b2').addEventListener('click', function() {
             document.querySelector('#s2').opened = true;
           });
-        &lt;/script>
+        </script>
       </template>
     </demo-snippet>
 
@@ -103,45 +94,9 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
             }
             document.getElementById('s3').opened = true;
           });
-        &lt;/script>
+        </script>
       </template>
     </demo-snippet>
-  </div>`;
-
-document.body.appendChild($_documentContainer.content);
-</script>ate&gt;
-        <bottom-sheet id="s3" class="center-bottom" label="Images (might take time to load)">
-          <dom-repeat id="t3">
-            <template>
-              <img src="[[item]]">
-            </template>
-          </dom-repeat>
-        </bottom-sheet>
-        <paper-button raised="" id="b3">Open</paper-button>
-        <script type="module">
-import '../../../@polymer/polymer/lib/elements/dom-repeat.js';
-import '../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-import '../../../@polymer/iron-demo-helpers/demo-snippet.js';
-import '../../../@polymer/paper-item/paper-item.js';
-import '../../../@polymer/paper-item/paper-icon-item.js';
-import '../../../@polymer/paper-button/paper-button.js';
-import '../../../@polymer/iron-icon/iron-icon.js';
-import '../bottom-sheet.js';
-document.getElementById('b3').addEventListener('click', function() {
-  const tpl = document.getElementById('t3');
-  if (!tpl.items) {
-    const imgs = [];
-    for (let i = 0; i < 15; i++) {
-      imgs.push('http://loremflickr.com/400/400/?random=' + i);
-    }
-    tpl.items = imgs;
-  }
-  document.getElementById('s3').opened = true;
-});
-</script>
-      
-    
-  
-
+  </div>
 
 </body></html>

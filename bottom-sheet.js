@@ -11,14 +11,13 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 */
-import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-
+import {PolymerElement} from '../../@polymer/polymer/polymer-element.js';
+import {IronA11yAnnouncer} from '../../@polymer/iron-a11y-announcer/iron-a11y-announcer.js';
+import {mixinBehaviors} from '../../@polymer/polymer/lib/legacy/class.js';
+import {IronOverlayBehaviorImpl, IronOverlayBehavior} from '../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js';
+import {html} from '../../@polymer/polymer/lib/utils/html-tag.js';
 import '../../@polymer/polymer/lib/elements/dom-if.js';
-import { IronA11yAnnouncer } from '../../@polymer/iron-a11y-announcer/iron-a11y-announcer.js';
-import { mixinBehaviors } from '../../@polymer/polymer/lib/legacy/class.js';
-import { IronOverlayBehaviorImpl, IronOverlayBehavior } from '../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js';
 import '../../@polymer/paper-styles/paper-styles.js';
-import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
 // Keeps track of the toast currently opened.
 let currentSheet;
 /**
@@ -70,7 +69,7 @@ let currentSheet;
  * @polymer
  * @demo demo/index.html
  * @memberof UiElements
- * @appliesMixin Polymer.IronOverlayBehavior
+ * @polymerBehavior Polymer.IronOverlayBehavior
  */
 class BottomSheet extends mixinBehaviors([IronOverlayBehavior], PolymerElement) {
   static get template() {
@@ -98,7 +97,6 @@ class BottomSheet extends mixinBehaviors([IronOverlayBehavior], PolymerElement) 
       transform: translateY(100px);
       max-width: var(--bottom-sheet-max-width);
       max-height: var(--bottom-sheet-max-height);
-      @apply --arc-font-common-base;
     }
 
     :host(.fit-bottom) {
