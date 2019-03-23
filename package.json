@@ -1,25 +1,55 @@
 {
-  "name": "@advanced-rest-client/bottom-sheet",
-  "version": "2.0.2",
-  "license": "Apache-2.0",
   "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
-  "devDependencies": {
-    "@polymer/gen-typescript-declarations": "^1.5.1"
+  "keywords": [
+    "web-components",
+    "polymer",
+    "paper element",
+    "bottom sheet",
+    "menu",
+    "button"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/advanced-rest-client/bottom-sheet.git"
   },
-  "private": false,
-  "main": "bottom-sheet.html",
+  "name": "@advanced-rest-client/bottom-sheet",
+  "version": "3.0.0-preview.1",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@polymer/gen-typescript-declarations": "^1.5.1",
+    "@polymer/iron-component-page": "^4.0.0",
+    "@polymer/iron-demo-helpers": "^3.0.0",
+    "@polymer/iron-test-helpers": "^3.0.0",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "@polymer/paper-item": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.3",
+    "wct-mocha": "^1.0.0"
+  },
+  "main": "bottom-sheet.js",
   "scripts": {
     "lint": "polymer lint bottom-sheet.html",
     "test-sauce": "polymer test --plugin sauce --job-name \"bottom-sheet:local-test\"",
     "test": "polymer test --plugin local",
     "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/advanced-rest-client/bottom-sheet.git"
-  },
   "authors": [
     "Pawel Psztyc",
     "The Advanced REST client authors <arc@mulesoft.com>"
-  ]
+  ],
+  "contributors": [
+    "Pawel Psztyc",
+    "The Advanced REST Client authors"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-a11y-announcer": "^3.0.0",
+    "@polymer/iron-overlay-behavior": "^3.0.0",
+    "@polymer/paper-styles": "^3.0.0"
+  }
 }

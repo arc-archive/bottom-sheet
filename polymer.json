@@ -1,6 +1,8 @@
 {
+  "npm": true,
   "lint": {
-    "rules": ["polymer-2"],
-    "ignoreWarnings": ["could-not-resolve-reference"]
+    "rules": [
+      "polymer-3"
+    ]
   }
 }
