@@ -33,9 +33,9 @@
   },
   "main": "bottom-sheet.js",
   "scripts": {
-    "lint": "polymer lint bottom-sheet.html",
+    "lint": "polymer lint --npm bottom-sheet.js",
     "test-sauce": "polymer test --plugin sauce --job-name \"bottom-sheet:local-test\"",
-    "test": "polymer test --plugin local",
+    "test": "polymer test --npm --plugin local",
     "update-types": "gen-typescript-declarations --deleteExisting --outDir ."
   },
   "authors": [
