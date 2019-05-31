@@ -5,15 +5,12 @@
  *   https://github.com/Polymer/tools/tree/master/packages/gen-typescript-declarations
  *
  * To modify these typings, edit the source file(s):
- *   bottom-sheet.html
+ *   bottom-sheet.js
  */
 
-/// <reference path="../polymer/types/polymer-element.d.ts" />
-/// <reference path="../polymer/types/lib/elements/dom-if.d.ts" />
-/// <reference path="../iron-a11y-announcer/iron-a11y-announcer.d.ts" />
-/// <reference path="../polymer/types/lib/legacy/class.d.ts" />
-/// <reference path="../iron-overlay-behavior/iron-overlay-behavior.d.ts" />
-/// <reference path="../paper-styles/paper-styles.d.ts" />
+
+// tslint:disable:variable-name Describing an API that's defined elsewhere.
+// tslint:disable:no-any describes the API as best we are able today
 
 declare namespace UiElements {
 
@@ -62,13 +59,11 @@ declare namespace UiElements {
    * `--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
    * `--bottom-sheet-box-shadow` | Box shaddow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
    */
-  class BottomSheet extends
-    Polymer.IronOverlayBehavior(
-    Object) {
+  class BottomSheet {
 
     /**
      * Returns the scrolling element.
-     *        
+     *    
      */
     readonly scrollTarget: any;
 
@@ -109,6 +104,11 @@ declare namespace UiElements {
   }
 }
 
-interface HTMLElementTagNameMap {
-  "bottom-sheet": UiElements.BottomSheet;
+declare global {
+
+  interface HTMLElementTagNameMap {
+    "bottom-sheet": UiElements.BottomSheet;
+  }
 }
+
+export {};
