@@ -1,102 +1,48 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html>
+<html>
+
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <title>bottom-sheet demo</title>
-  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module" src="../../../@polymer/polymer/lib/elements/dom-repeat.js"></script>
-  <script type="module" src="../../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-  <script type="module" src="../../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
-  <script type="module" src="../../../@polymer/paper-item/paper-item.js"></script>
-  <script type="module" src="../../../@polymer/paper-item/paper-icon-item.js"></script>
-  <script type="module" src="../../../@polymer/paper-button/paper-button.js"></script>
-  <script type="module" src="../../../@polymer/iron-icon/iron-icon.js"></script>
-  <script type="module" src="../bottom-sheet.js"></script>
-  <custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-    </style>
-  </custom-style>
+
+  <style>
+  .card {
+    background-color: #fff;
+    padding: 12px;
+    margin: 20px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+                0 1px 8px 0 rgba(0, 0, 0, 0.12),
+                0 3px 3px -2px rgba(0, 0, 0, 0.4);
+  }
+
+  body.styled {
+    --arc-font-caption-font-size: 12px;
+    --arc-font-caption-font-weight: 400;
+    --arc-font-caption-letter-spacing: 0.011em;
+    --arc-font-caption-line-height: 20px;
+  }
+
+  body.styled.dark {
+    background-color: #424242;
+    height: 100vh;
+    color: #fff;
+    --bottom-sheet-background-color: #424242;
+    --bottom-sheet-label-color: rgba(255, 255, 255, 0.74);
+    --bottom-sheet-color: #fff;
+  }
+
+  body.styled.dark .card {
+    background-color: #424242;
+  }
+  </style>
 </head>
-<body unresolved="">
-  <div class="vertical-section-container centered">
-    <h3>The `bottom-sheet`</h3>
-    <demo-snippet>
-      <template>
-        <bottom-sheet id="s1" no-padding="">
-          <paper-item>Action #1</paper-item>
-          <paper-item>Action #2</paper-item>
-          <paper-item>Action #3</paper-item>
-        </bottom-sheet>
-        <paper-button raised="" id="b1">Open menu</paper-button>
-        <script>
-          document.querySelector('#b1').addEventListener('click', function() {
-            document.querySelector('#s1').open();
-          });
-        </script>
-      </template>
-    </demo-snippet>
 
-    <h3>Open with ...</h3>
-    <demo-snippet>
-      <template>
-        <bottom-sheet id="s2" class="center-bottom" label="Open with ..." no-padding="">
-          <paper-icon-item>
-            <iron-icon src="inbox.png" slot="item-icon"></iron-icon>
-            Inbox
-          </paper-icon-item>
-          <paper-icon-item>
-            <iron-icon src="keep.png" slot="item-icon"></iron-icon>
-            Keep
-          </paper-icon-item>
-          <paper-icon-item>
-            <iron-icon src="hangouts.png" slot="item-icon"></iron-icon>
-            Hangouts
-          </paper-icon-item>
-          <paper-icon-item>
-            <iron-icon src="messenger.png" slot="item-icon"></iron-icon>
-            Messenger
-          </paper-icon-item>
-          <paper-icon-item>
-            <iron-icon src="gplus.png" slot="item-icon"></iron-icon>
-            Google+
-          </paper-icon-item>
-        </bottom-sheet>
-        <paper-button raised="" id="b2">Open with ...</paper-button>
-        <script>
-          document.querySelector('#b2').addEventListener('click', function() {
-            document.querySelector('#s2').opened = true;
-          });
-        </script>
-      </template>
-    </demo-snippet>
+<body class="styled">
+  <div id="demo"></div>
 
+  <script type="module" src="index.js"></script>
+</body>
 
-    <h3>Scrollable content</h3>
-    <demo-snippet>
-      <template>
-        <bottom-sheet id="s3" class="center-bottom" label="Images (might take time to load)">
-          <dom-repeat id="t3">
-            <template>
-              <img src="[[item]]">
-            </template>
-          </dom-repeat>
-        </bottom-sheet>
-        <paper-button raised="" id="b3">Open</paper-button>
-        <script>
-          document.getElementById('b3').addEventListener('click', function() {
-            const tpl = document.getElementById('t3');
-            if (!tpl.items) {
-              const imgs = [];
-              for (let i = 0; i < 15; i++) {
-                imgs.push('http://loremflickr.com/400/400/?random=' + i);
-              }
-              tpl.items = imgs;
-            }
-            document.getElementById('s3').opened = true;
-          });
-        </script>
-      </template>
-    </demo-snippet>
-  </div>
-
-</body></html>
+</html>

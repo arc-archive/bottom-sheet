@@ -11,13 +11,9 @@ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 License for the specific language governing permissions and limitations under
 the License.
 */
-import {PolymerElement} from '../../@polymer/polymer/polymer-element.js';
-import {IronA11yAnnouncer} from '../../@polymer/iron-a11y-announcer/iron-a11y-announcer.js';
-import {mixinBehaviors} from '../../@polymer/polymer/lib/legacy/class.js';
-import {IronOverlayBehaviorImpl, IronOverlayBehavior} from '../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js';
-import {html} from '../../@polymer/polymer/lib/utils/html-tag.js';
-import '../../@polymer/polymer/lib/elements/dom-if.js';
-import '../../@polymer/paper-styles/paper-styles.js';
+import { LitElement, html, css } from 'lit-element';
+import { ArcOverlayMixin } from '@advanced-rest-client/arc-overlay-mixin/arc-overlay-mixin.js';
+import { IronA11yAnnouncer } from '@polymer/iron-a11y-announcer/iron-a11y-announcer.js';
 // Keeps track of the toast currently opened.
 let currentSheet;
 /**
@@ -71,11 +67,9 @@ let currentSheet;
  * @memberof UiElements
  * @polymerBehavior Polymer.IronOverlayBehavior
  */
-class BottomSheet extends mixinBehaviors([IronOverlayBehavior], PolymerElement) {
-  static get template() {
-    return html`
-    <style>
-    :host {
+class BottomSheet extends ArcOverlayMixin(LitElement) {
+  static get styles() {
+    return css`:host {
       display: block;
       position: fixed;
       background-color: var(--bottom-sheet-background-color, #fff);
@@ -117,13 +111,21 @@ class BottomSheet extends mixinBehaviors([IronOverlayBehavior], PolymerElement) 
     }
 
     label {
-      @apply --arc-font-caption;
+      white-space: var(--arc-font-nowrap-white-space);
+      overflow: var(--arc-font-nowrap-overflow);
+      text-overflow: var(--arc-font-nowrap-text-overflow);
+      font-size: var(--arc-font-caption-font-size);
+      font-weight: var(--arc-font-caption-font-weight);
+      line-height: var(--arc-font-caption-line-height);
+      letter-spacing: var(--arc-font-caption-letter-spacing);
+
       height: 48px;
       color: var(--bottom-sheet-label-color, rgba(0, 0, 0, 0.54));
       display: block;
       font-size: 15px;
-      @apply --layout-horizontal;
-      @apply --layout-center;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       padding-left: 16px;
     }
 
@@ -133,91 +135,102 @@ class BottomSheet extends mixinBehaviors([IronOverlayBehavior], PolymerElement) 
 
     .scrollable {
       padding: 24px;
-      max-height: 100vh;
-      @apply --layout-scroll;
-      @apply --bottom-sheet-scrollable;
+      max-height: calc(100vh - 52px);
+      -webkit-overflow-scrolling: touch;
+      overflow: auto;
     }
 
     :host([no-padding]) .scrollable {
       padding: 0;
-    }
-    </style>
-    <template is="dom-if" if="[[label]]">
-      <label>[[label]]</label>
-    </template>
-    <div id="scrollable" class="scrollable">
-      <slot></slot>
-    </div>
-`;
+    }`;
   }
 
-  static get is() {
-    return 'bottom-sheet';
+  render() {
+    const { label } = this;
+    return html`
+    ${label ? html`<label>${label}</label>` : undefined}
+    <div class="scrollable">
+      <slot></slot>
+    </div>`;
   }
+
   static get properties() {
     return {
       /**
        * The element to fit `this` into.
-       * Overridden from `Polymer.IronFitBehavior`.
+       *
+       * @type {Element}
        */
-      fitInto: {
-        type: Object,
-        value: window,
-        observer: '_onFitIntoChanged'
-      },
+      fitInto: { type: Object },
 
       /**
        * The label of the bottom sheet.
        */
-      label: {
-        type: String,
-        value: ''
-      },
-
-      sizingTarget: {
-        type: Object
-      },
+      label: { type: String },
+      /**
+       * Size target for this element.
+       * @type {Element}
+       */
+      sizingTarget: { type: Object },
       // If set the padding won't be added to the scrollable element.
       noPadding: {
         type: Boolean,
-        reflectToAttribute: true
-      },
-      /**
-       * True if the overlay is currently displayed.
-       */
-      opened:
-          {observer: '_openedChanged', type: Boolean, value: false, notify: true}
+        reflect: true
+      }
     };
+  }
+
+  get fitInto() {
+    return this._fitInto;
+  }
+
+  set fitInto(value) {
+    const old = this._fitInto;
+    if (old === value) {
+      return;
+    }
+    this._fitInto = value;
+    this._onFitIntoChanged(value);
   }
 
   /**
    * Returns the scrolling element.
    */
   get scrollTarget() {
-    return this.$.scrollable;
+    return this.shadowRoot.querySelector('.scrollable');
   }
 
   constructor() {
     super();
     this.__onTransitionEnd = this.__onTransitionEnd.bind(this);
+
+    this.fitInto = window;
+    this.opened = false;
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    /* istanbul ignore else  */
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
     IronA11yAnnouncer.requestAvailability();
     this.addEventListener('transitionend', this.__onTransitionEnd);
-    if (!this.sizingTarget) {
-      this.sizingTarget = this.$.scrollable;
-    }
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    /* istanbul ignore else  */
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
     this.removeEventListener('transitionend', this.__onTransitionEnd);
   }
 
-  _openedChanged() {
-    if (this.opened) {
+  firstUpdated() {
+    this.sizingTarget = this.scrollTarget;
+  }
+
+  _openedChanged(opened) {
+    if (opened) {
       if (currentSheet && currentSheet !== this) {
         currentSheet.close();
       }
@@ -232,20 +245,22 @@ class BottomSheet extends mixinBehaviors([IronOverlayBehavior], PolymerElement) 
     } else if (currentSheet === this) {
       currentSheet = null;
     }
-    IronOverlayBehaviorImpl._openedChanged.apply(this, arguments);
+    super._openedChanged(opened);
   }
 
   /**
-   * Overridden from `IronOverlayBehavior`.
+   * Overridden from `ArcOverlayMixin`.
    */
   _renderOpened() {
-    this.classList.add('bottom-sheet-open');
+    const node = this;
+    node.classList.add('bottom-sheet-open');
   }
   /**
-   * Overridden from `IronOverlayBehavior`.
+   * Overridden from `ArcOverlayMixin`.
    */
   _renderClosed() {
-    this.classList.remove('bottom-sheet-open');
+    const node = this;
+    node.classList.remove('bottom-sheet-open');
   }
   /**
    * @private
@@ -275,4 +290,4 @@ class BottomSheet extends mixinBehaviors([IronOverlayBehavior], PolymerElement) 
    * @param {{text: string}} detail Contains text that will be announced.
    */
 }
-window.customElements.define(BottomSheet.is, BottomSheet);
+window.customElements.define('bottom-sheet', BottomSheet);
