@@ -12,7 +12,7 @@ Bottom sheets slide up from the bottom of the screen to reveal more content.
 ## Example:
 
 ```html
-<bottom-sheet no-padding>
+<bottom-sheet nopadding>
   <paper-item>Action #1</paper-item>
   <paper-item>Action #2</paper-item>
   <paper-item>Action #3</paper-item>
@@ -40,44 +40,88 @@ npm install --save @advanced-rest-client/bottom-sheet
     </script>
   </head>
   <body>
-    <bottom-sheet></bottom-sheet>
+    <bottom-sheet>
+      <paper-item>Action #1</paper-item>
+      <paper-item>Action #2</paper-item>
+      <paper-item>Action #3</paper-item>
+    </bottom-sheet>
+    <paper-button>Open menu</paper-button>
+    <script>
+    {
+      document.querySelector('paper-button').addEventListener('click', () => {
+        document.querySelector('bottom-sheet').opened = true;
+      });
+    }
+    </script>
   </body>
 </html>
 ```
 
-### In a Polymer 3 element
+### In a LitElement
 
 ```js
-import {PolymerElement, html} from './node_modules/@polymer/polymer/polymer-element.js';
-import './node_modules/@advanced-rest-client/bottom-sheet/bottom-sheet.js';
+import { LitElement, html } from 'lit-element';
+import '@advanced-rest-client/bottom-sheet/bottom-sheet.js';
 
-class SampleElement extends PolymerElement {
-  static get template() {
+class SampleElement extends LitElement {
+  static get properties() {
+    return {
+      menuOpened: { type: Boolean }
+    }
+  }
+  render() {
     return html`
-    <bottom-sheet></bottom-sheet>
+    <bottom-sheet .opened="${this.menuOpened}">
+      <paper-item>Action #1</paper-item>
+      <paper-item>Action #2</paper-item>
+      <paper-item>Action #3</paper-item>
+    </bottom-sheet>
     `;
   }
 }
 customElements.define('sample-element', SampleElement);
 ```
 
-### Installation
+### In a Polymer 3 element
+
+```js
+import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
+import '@advanced-rest-client/bottom-sheet/bottom-sheet.js';
+
+class SampleElement extends PolymerElement {
+  static get properties() {
+    return {
+      menuOpened: { type: Boolean, value: false }
+    }
+  }
+  static get template() {
+    return html`
+    <bottom-sheet opened?="{{menuOpened}}">
+      <paper-item>Action #1</paper-item>
+      <paper-item>Action #2</paper-item>
+      <paper-item>Action #3</paper-item>
+    </bottom-sheet>
+    `;
+  }
+}
+customElements.define('sample-element', SampleElement);
+```
+
+### Development
 
 ```sh
 git clone https://github.com/advanced-rest-client/bottom-sheet
-cd api-url-editor
+cd bottom-sheet
 npm install
-npm install -g polymer-cli
 ```
 
 ### Running the demo locally
 
 ```sh
-polymer serve --npm
-open http://127.0.0.1:<port>/demo/
+npm start
 ```
 
 ### Running the tests
 ```sh
-polymer test --npm
+polymer test
 ```
