@@ -102,3 +102,32 @@
 
 
 
+# [3.1.0](https://github.com/advanced-rest-client/bottom-sheet/compare/1.1.1...3.1.0) (2019-07-23)
+
+
+### Breaking
+
+* Upgrading to polymer 3 ([92e9c2f7d4c6eb5696554855a4643e0e363bc78c](https://github.com/advanced-rest-client/bottom-sheet/commit/92e9c2f7d4c6eb5696554855a4643e0e363bc78c))
+
+### docs
+
+* restoring typpings ([24d9e797ca07a283a4f49a653361dba691441125](https://github.com/advanced-rest-client/bottom-sheet/commit/24d9e797ca07a283a4f49a653361dba691441125))
+* updating readme file ([88ff8573446b7eedf4b8713c4c3e77309048d770](https://github.com/advanced-rest-client/bottom-sheet/commit/88ff8573446b7eedf4b8713c4c3e77309048d770))
+
+### fix
+
+* removing unwanted file ([09ff3376a146d25fe13300965c6fdb9eb3938a70](https://github.com/advanced-rest-client/bottom-sheet/commit/09ff3376a146d25fe13300965c6fdb9eb3938a70))
+
+### refactor
+
+* upgrading to LitElement ([11dc771508c3ea54b7ea2f1da5f47244c103f18d](https://github.com/advanced-rest-client/bottom-sheet/commit/11dc771508c3ea54b7ea2f1da5f47244c103f18d))
+
+### Update
+
+* Bumping version to stable ([40ce43dd82accbd445faf2388a94bf799e7d8d48](https://github.com/advanced-rest-client/bottom-sheet/commit/40ce43dd82accbd445faf2388a94bf799e7d8d48))
+* Removing FF from local tests do to unknown WCT error ([88d35ba46704a68418825026a2091b9cbc18e3f2](https://github.com/advanced-rest-client/bottom-sheet/commit/88d35ba46704a68418825026a2091b9cbc18e3f2))
+* Updating typpings ([e9d97b09c80b7a41543b9a3c7cf3b8bdb84a7ed6](https://github.com/advanced-rest-client/bottom-sheet/commit/e9d97b09c80b7a41543b9a3c7cf3b8bdb84a7ed6))
+* Upgrading dependencies ([09b4fbf729169bf1b034f8021512d5324f65f625](https://github.com/advanced-rest-client/bottom-sheet/commit/09b4fbf729169bf1b034f8021512d5324f65f625))
+
+
+
