@@ -1,6 +1,6 @@
 [![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/bottom-sheet.svg)](https://www.npmjs.com/package/@advanced-rest-client/bottom-sheet)
 
-[![Build Status](https://travis-ci.org/advanced-rest-client/bottom-sheet.svg?branch=stage)](https://travis-ci.org/advanced-rest-client/bottom-sheet)
+[![Build Status](https://travis-ci.com/advanced-rest-client/bottom-sheet.svg)](https://travis-ci.com/advanced-rest-client/bottom-sheet)
 
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/advanced-rest-client/bottom-sheet)
 
@@ -18,10 +18,6 @@ Bottom sheets slide up from the bottom of the screen to reveal more content.
   <paper-item>Action #3</paper-item>
 </bottom-sheet>
 ```
-
-## API components
-
-This components is a part of [API components ecosystem](https://elements.advancedrestclient.com/)
 
 ## Usage
 
@@ -107,7 +103,7 @@ class SampleElement extends PolymerElement {
 customElements.define('sample-element', SampleElement);
 ```
 
-### Development
+## Development
 
 ```sh
 git clone https://github.com/advanced-rest-client/bottom-sheet

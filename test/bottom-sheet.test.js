@@ -1,14 +1,17 @@
-import { fixture, assert, aTimeout } from '@open-wc/testing';
-import { a11ySuite } from '@advanced-rest-client/a11y-suite/index.js';
+import { fixture, assert, aTimeout, oneEvent } from '@open-wc/testing';
 import '../bottom-sheet.js';
 
-describe('<bottom-sheet>', function() {
+describe('<bottom-sheet>', () => {
   async function basicFixture() {
-    return (await fixture(`<bottom-sheet></bottom-sheet>`));
+    return (fixture(`<bottom-sheet></bottom-sheet>`));
   }
 
   async function openedFixture() {
-    return (await fixture(`<bottom-sheet opened></bottom-sheet>`));
+    return (fixture(`<bottom-sheet opened></bottom-sheet>`));
+  }
+
+  async function labelFixture() {
+    return (fixture(`<bottom-sheet label="test"></bottom-sheet>`));
   }
 
   describe('Basics', () => {
@@ -16,7 +19,7 @@ describe('<bottom-sheet>', function() {
 
     it('is hidden', async () => {
       sheet = await basicFixture();
-      assert.isFalse(sheet.opened, '`opened` is false');
+      assert.isFalse(sheet.opened);
     });
 
     it('is visible', async () => {
@@ -36,13 +39,9 @@ describe('<bottom-sheet>', function() {
       assert.isFalse(sheet.opened, '`opened` is true');
     });
 
-    it('bottom-sheet fires opened event', function(done) {
-      openedFixture()
-          .then((sheet) => {
-            sheet.addEventListener('iron-overlay-opened', async () => {
-              done();
-            });
-          });
+    it('bottom-sheet fires opened event', async () => {
+      const element = await openedFixture();
+      await oneEvent(element, 'iron-overlay-opened');
     });
 
     it('there is only 1 bottom-sheet opened', async () => {
@@ -59,7 +58,7 @@ describe('<bottom-sheet>', function() {
 
     it('scrollTarget returns the target', async () => {
       sheet = await basicFixture();
-      await aTimeout();
+      await aTimeout(0);
       assert.ok(sheet.scrollTarget);
     });
 
@@ -78,16 +77,19 @@ describe('<bottom-sheet>', function() {
   });
 
   describe('a11y', () => {
-    it('Normal state', async () => {
-      await a11ySuite('Normal state', `<bottom-sheet></bottom-sheet>`);
+    it('passes in a regular state', async () => {
+      const element = await basicFixture();
+      assert.isAccessible(element);
     });
 
-    it('Opened state', async () => {
-      await a11ySuite('Opened state', `<bottom-sheet opened></bottom-sheet>`);
+    it('passes in an opened state', async () => {
+      const element = await openedFixture();
+      assert.isAccessible(element);
     });
 
-    it('With label', async () => {
-      await a11ySuite('Opened state', `<bottom-sheet label="test"></bottom-sheet>`);
+    it('passes with a label', async () => {
+      const element = await labelFixture();
+      assert.isAccessible(element);
     });
   });
 });

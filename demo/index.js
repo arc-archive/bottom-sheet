@@ -95,4 +95,3 @@ class DemoPage {
 }
 const instance = new DemoPage();
 instance.render();
-window._demo = instance;
