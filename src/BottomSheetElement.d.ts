@@ -66,8 +66,13 @@ export class BottomSheetElement {
   render(): TemplateResult;
   /**
    * The label of the bottom sheet.
+   * @attribute
    */
   label: string;
+  /**
+   * Removes padding from the element styles
+   * @attribute
+   */
   noPadding: boolean;
 
   fitInto: HTMLElement;

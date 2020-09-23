@@ -1,0 +1,127 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "bottom-sheet",
+      "path": "./bottom-sheet.js",
+      "description": "Material design: [Bottom sheets](https://material.google.com/components/bottom-sheets.html#)\n\n# `<bottom-sheet>`\n\nBottom sheets slide up from the bottom of the screen to reveal more content.\n\n### Example\n\n```html\n<bottom-sheet>\n    <paper-icon-item>\n      <iron-icon src=\"inbox.png\" item-icon></iron-icon>\n      Inbox\n    </paper-icon-item>\n    <paper-icon-item>\n      <iron-icon src=\"keep.png\" item-icon></iron-icon>\n      Keep\n    </paper-icon-item>\n    <paper-icon-item>\n      <iron-icon src=\"hangouts.png\" item-icon></iron-icon>\n      Hangouts\n    </paper-icon-item>\n  </bottom-sheet>\n```\n\n### Positioning\n\nUse the `fit-bottom` class to position the bar at the bottom of the app and with full width;\n\nUse `center-bottom` class to display the bar at the bottom centered on a page.\n\n### Styling\n\n`<bottom-sheet>` provides the following custom properties and mixins for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`\n`--bottom-sheet-color` | The bottom-sheet color | `#323232`\n`--bottom-sheet-max-width` | Max width of the element | ``\n`--bottom-sheet-max-height` | Max heigth of the element | ``\n`--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`\n`--bottom-sheet-box-shadow` | Box shaddow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "The label of the bottom sheet.",
+          "type": "string"
+        },
+        {
+          "name": "noPadding",
+          "description": "Removes padding from the element styles",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "styles",
+          "type": "CSSResult"
+        },
+        {
+          "name": "label",
+          "attribute": "label",
+          "description": "The label of the bottom sheet.",
+          "type": "string"
+        },
+        {
+          "name": "noPadding",
+          "attribute": "noPadding",
+          "description": "Removes padding from the element styles",
+          "type": "boolean"
+        },
+        {
+          "name": "fitInto",
+          "type": "HTMLElement"
+        },
+        {
+          "name": "scrollTarget",
+          "description": "Returns the scrolling element.",
+          "type": "HTMLElement"
+        },
+        {
+          "name": "opened",
+          "description": "True if the overlay is currently displayed.",
+          "type": "boolean"
+        },
+        {
+          "name": "withBackdrop",
+          "description": "Set to true to display a backdrop behind the overlay. It traps the focus\nwithin the light DOM of the overlay.",
+          "type": "boolean"
+        },
+        {
+          "name": "noAutoFocus",
+          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
+          "type": "boolean"
+        },
+        {
+          "name": "noCancelOnEscKey",
+          "description": "Set to true to disable canceling the overlay with the ESC key.",
+          "type": "boolean"
+        },
+        {
+          "name": "noCancelOnOutsideClick",
+          "description": "Set to true to disable canceling the overlay by clicking outside it.",
+          "type": "boolean"
+        },
+        {
+          "name": "closingReason",
+          "description": "Contains the reason(s) this overlay was last closed (see\n`overlay-closed`). `ArcOverlayMixin` provides the `canceled`\nreason; implementers of the behavior can provide other reasons in\naddition to `canceled`.",
+          "type": "{ type: Object; }"
+        },
+        {
+          "name": "restoreFocusOnClose",
+          "description": "Set to true to enable restoring of focus when overlay is closed.",
+          "type": "boolean"
+        },
+        {
+          "name": "allowClickThrough",
+          "description": "Set to true to allow clicks to go through overlays.\nWhen the user clicks outside this overlay, the click may\nclose the overlay below.",
+          "type": "boolean"
+        },
+        {
+          "name": "alwaysOnTop",
+          "description": "Set to true to keep overlay always on top.",
+          "type": "boolean"
+        },
+        {
+          "name": "scrollAction",
+          "description": "Determines which action to perform when scroll outside an opened overlay\nhappens. Possible values: lock - blocks scrolling from happening, refit -\ncomputes the new position on the overlay cancel - causes the overlay to\nclose",
+          "type": "string"
+        },
+        {
+          "name": "canceled",
+          "type": "boolean"
+        },
+        {
+          "name": "isAttached",
+          "type": "boolean"
+        },
+        {
+          "name": "backdropElement",
+          "type": "ArcOverlayBackdrop"
+        },
+        {
+          "name": "onopenedchanged",
+          "type": "EventListener | null"
+        },
+        {
+          "name": "onoverlaycanceled",
+          "type": "EventListener | null"
+        },
+        {
+          "name": "onoverlayopened",
+          "type": "EventListener | null"
+        },
+        {
+          "name": "onoverlayclosed",
+          "type": "EventListener | null"
+        }
+      ]
+    }
+  ]
+}

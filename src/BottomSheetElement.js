@@ -80,24 +80,16 @@ export class BottomSheetElement extends ArcOverlayMixin(LitElement) {
 
   static get properties() {
     return {
-      // /**
-      //  * The element to fit `this` into.
-      //  */
-      // fitInto: { type: Object },
-
       /**
        * The label of the bottom sheet.
+       * @attribute
        */
       label: { type: String },
-      // /**
-      //  * Size target for this element.
-      //  */
-      // sizingTarget: { type: Object },
-      // If set the padding won't be added to the scrollable element.
-      noPadding: {
-        type: Boolean,
-        reflect: true
-      }
+      /**
+       * Removes padding from the element styles
+       * @attribute
+       */
+      noPadding: { type: Boolean, reflect: true }
     };
   }
 
