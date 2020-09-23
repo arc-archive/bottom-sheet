@@ -186,3 +186,18 @@
  [fe7e9ef](https://github.com/advanced-rest-client/bottom-sheet/commit/fe7e9efe9e5d3c22594a2c8d5ef7ea20fedcc0f3) by Paweł Psztyć
 
 
+<a name="3.2.1"></a>
+## [3.2.1](https://github.com/advanced-rest-client/bottom-sheet/compare/3.1.0...3.2.1) (2020-09-23)
+
+### Update
+
+* updating dependencies [532098b](https://github.com/advanced-rest-client/bottom-sheet/commit/532098bda47b652d5b107632af2cf626f24ceb00) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [7dc5320](https://github.com/advanced-rest-client/bottom-sheet/commit/7dc53206fffa9555726c1acf8283f7d1885edabd) by Ci agent
+* upgrading dependencies to fix audit errors [a42558a](https://github.com/advanced-rest-client/bottom-sheet/commit/a42558ac37504dcc112880480c70e3254da0d86b) by Pawel Psztyc
+
+
+### Features
+
+* adding types support and upgrading dependencies [7853e44](https://github.com/advanced-rest-client/bottom-sheet/commit/7853e447e5e29dba3865923e07148c05f89b55e6) by Pawel
+
+
