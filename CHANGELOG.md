@@ -201,3 +201,24 @@
 * adding types support and upgrading dependencies [7853e44](https://github.com/advanced-rest-client/bottom-sheet/commit/7853e447e5e29dba3865923e07148c05f89b55e6) by Pawel
 
 
+<a name="3.2.2"></a>
+## [3.2.2](https://github.com/advanced-rest-client/bottom-sheet/compare/3.2.0...3.2.2) (2020-12-12)
+
+### Build
+
+* bumping version [56e0a85](https://github.com/advanced-rest-client/bottom-sheet/commit/56e0a85ec29a5dbcff44853016d8be8874a30556) by Pawel Psztyc
+
+
+### Update
+
+* updating types [1d4634f](https://github.com/advanced-rest-client/bottom-sheet/commit/1d4634fd3ce4172d9ff7952c47bd1d48fe7f2b43) by Pawel Psztyc
+* [ci skip] automated merge master->stage. syncing main branches [2240854](https://github.com/advanced-rest-client/bottom-sheet/commit/224085425f342be34f4f77832cc866109b08462c) by Ci agent
+* updating dependencies [532098b](https://github.com/advanced-rest-client/bottom-sheet/commit/532098bda47b652d5b107632af2cf626f24ceb00) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [7dc5320](https://github.com/advanced-rest-client/bottom-sheet/commit/7dc53206fffa9555726c1acf8283f7d1885edabd) by Ci agent
+
+
+### Testing
+
+* updating test runner [6975d3b](https://github.com/advanced-rest-client/bottom-sheet/commit/6975d3b6632b212e0ff65e62daf412d10a14083f) by Pawel Psztyc
+
+
