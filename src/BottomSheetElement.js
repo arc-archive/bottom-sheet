@@ -16,6 +16,8 @@ import { ArcOverlayMixin } from '@advanced-rest-client/arc-overlay-mixin';
 import { IronA11yAnnouncer } from '@polymer/iron-a11y-announcer';
 import sheetStyles from './styles.js';
 
+/** @typedef {import('lit-html').TemplateResult} TemplateResult */
+
 // Keeps track of the toast currently opened.
 let currentSheet;
 /**
@@ -59,9 +61,9 @@ let currentSheet;
  * `--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
  * `--bottom-sheet-color` | The bottom-sheet color | `#323232`
  * `--bottom-sheet-max-width` | Max width of the element | ``
- * `--bottom-sheet-max-height` | Max heigth of the element | ``
+ * `--bottom-sheet-max-height` | Max height of the element | ``
  * `--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
- * `--bottom-sheet-box-shadow` | Box shaddow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
+ * `--bottom-sheet-box-shadow` | Box shadow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
  *
  */
 export class BottomSheetElement extends ArcOverlayMixin(LitElement) {

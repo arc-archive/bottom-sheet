@@ -37,7 +37,7 @@ class DemoPage {
   render() {
     render(html`<div class="vertical-section-container centered">
       <h3>The bottom-sheet</h3>
-      <bottom-sheet nopadding>
+      <bottom-sheet noPadding>
         <paper-item>Action #1</paper-item>
         <paper-item>Action #2</paper-item>
         <paper-item>Action #3</paper-item>
@@ -45,7 +45,7 @@ class DemoPage {
       <paper-button raised @click="${this._open}">Open menu</paper-button>
 
       <h3>Open with ...</h3>
-      <bottom-sheet class="center-bottom" label="Open with ..." nopadding>
+      <bottom-sheet class="center-bottom" label="Open with ..." noPadding>
         <paper-icon-item>
           <iron-icon src="inbox.png" slot="item-icon"></iron-icon>
           Inbox
@@ -71,16 +71,16 @@ class DemoPage {
 
       <h3>Scrollable content</h3>
       <bottom-sheet class="center-bottom" label="Images (might take time to load)">
-        <img src="http://loremflickr.com/400/400/?random=0">
-        <img src="http://loremflickr.com/400/400/?random=1">
-        <img src="http://loremflickr.com/400/400/?random=2">
-        <img src="http://loremflickr.com/400/400/?random=3">
-        <img src="http://loremflickr.com/400/400/?random=4">
-        <img src="http://loremflickr.com/400/400/?random=5">
-        <img src="http://loremflickr.com/400/400/?random=6">
-        <img src="http://loremflickr.com/400/400/?random=7">
-        <img src="http://loremflickr.com/400/400/?random=8">
-        <img src="http://loremflickr.com/400/400/?random=9">
+        <img alt="i1" src="http://loremflickr.com/400/400/?random=0">
+        <img alt="i2" src="http://loremflickr.com/400/400/?random=1">
+        <img alt="i3" src="http://loremflickr.com/400/400/?random=2">
+        <img alt="i4" src="http://loremflickr.com/400/400/?random=3">
+        <img alt="i5" src="http://loremflickr.com/400/400/?random=4">
+        <img alt="i6" src="http://loremflickr.com/400/400/?random=5">
+        <img alt="i7" src="http://loremflickr.com/400/400/?random=6">
+        <img alt="i8" src="http://loremflickr.com/400/400/?random=7">
+        <img alt="i9" src="http://loremflickr.com/400/400/?random=8">
+        <img alt="i10" src="http://loremflickr.com/400/400/?random=9">
       </bottom-sheet>
       <paper-button raised @click="${this._open}">Open</paper-button>
     </div>

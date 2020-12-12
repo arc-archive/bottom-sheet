@@ -1,15 +1,27 @@
 import { fixture, assert, aTimeout, oneEvent } from '@open-wc/testing';
 import '../bottom-sheet.js';
 
+
+/** @typedef {import('../index').BottomSheetElement} BottomSheetElement */
+
 describe('<bottom-sheet>', () => {
+  /**
+   * @returns {Promise<BottomSheetElement>}
+   */
   async function basicFixture() {
     return (fixture(`<bottom-sheet></bottom-sheet>`));
   }
 
+  /**
+   * @returns {Promise<BottomSheetElement>}
+   */
   async function openedFixture() {
     return (fixture(`<bottom-sheet opened></bottom-sheet>`));
   }
 
+  /**
+   * @returns {Promise<BottomSheetElement>}
+   */
   async function labelFixture() {
     return (fixture(`<bottom-sheet label="test"></bottom-sheet>`));
   }
@@ -79,17 +91,17 @@ describe('<bottom-sheet>', () => {
   describe('a11y', () => {
     it('passes in a regular state', async () => {
       const element = await basicFixture();
-      assert.isAccessible(element);
+      await assert.isAccessible(element);
     });
 
     it('passes in an opened state', async () => {
       const element = await openedFixture();
-      assert.isAccessible(element);
+      await assert.isAccessible(element);
     });
 
     it('passes with a label', async () => {
       const element = await labelFixture();
-      assert.isAccessible(element);
+      await assert.isAccessible(element);
     });
   });
 });

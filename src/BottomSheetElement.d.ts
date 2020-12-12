@@ -55,12 +55,12 @@ import { ArcOverlayMixin } from '@advanced-rest-client/arc-overlay-mixin';
  * `--bottom-sheet-background-color` | The bottom-sheet background-color | `#fff`
  * `--bottom-sheet-color` | The bottom-sheet color | `#323232`
  * `--bottom-sheet-max-width` | Max width of the element | ``
- * `--bottom-sheet-max-height` | Max heigth of the element | ``
+ * `--bottom-sheet-max-height` | Max height of the element | ``
  * `--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
- * `--bottom-sheet-box-shadow` | Box shaddow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
+ * `--bottom-sheet-box-shadow` | Box shadow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
  *
  */
-export class BottomSheetElement {
+export class BottomSheetElement extends ArcOverlayMixin(LitElement) {
   static readonly styles: CSSResult;
 
   render(): TemplateResult;
@@ -103,6 +103,4 @@ export class BottomSheetElement {
   _renderClosed(): void;
 
   _onFitIntoChanged(fitInto: HTMLElement): void;
-}
-export interface BottomSheetElement extends ArcOverlayMixin, LitElement {
 }
