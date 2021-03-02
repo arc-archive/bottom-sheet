@@ -1,15 +1,8 @@
-[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/bottom-sheet.svg)](https://www.npmjs.com/package/@advanced-rest-client/bottom-sheet)
-
-[![Build Status](https://travis-ci.com/advanced-rest-client/bottom-sheet.svg)](https://travis-ci.com/advanced-rest-client/bottom-sheet)
-
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/advanced-rest-client/bottom-sheet)
-
-
-# &lt;bottom-sheet&gt;
+# bottom-sheet element
 
 Bottom sheets slide up from the bottom of the screen to reveal more content.
 
-## Example:
+## Example
 
 ```html
 <bottom-sheet nopadding>
@@ -19,10 +12,15 @@ Bottom sheets slide up from the bottom of the screen to reveal more content.
 </bottom-sheet>
 ```
 
+[![Published on NPM](https://img.shields.io/npm/v/@advanced-rest-client/bottom-sheet.svg)](https://www.npmjs.com/package/@advanced-rest-client/bottom-sheet)
+
+[![Tests and publishing](https://github.com/advanced-rest-client/bottom-sheet/actions/workflows/deployment.yml/badge.svg)](https://github.com/advanced-rest-client/bottom-sheet/actions/workflows/deployment.yml)
+
 ## Usage
 
 ### Installation
-```
+
+```sh
 npm install --save @advanced-rest-client/bottom-sheet
 ```
 
@@ -118,6 +116,7 @@ npm start
 ```
 
 ### Running the tests
+
 ```sh
 polymer test
 ```
