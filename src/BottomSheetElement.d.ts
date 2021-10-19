@@ -58,7 +58,8 @@ import { ArcOverlayMixin } from '@advanced-rest-client/arc-overlay-mixin';
  * `--bottom-sheet-max-height` | Max height of the element | ``
  * `--bottom-sheet-label-color` | Color of the label | `rgba(0, 0, 0, 0.54)`
  * `--bottom-sheet-box-shadow` | Box shadow property of the element | `0 2px 5px 0 rgba(0, 0, 0, 0.26)`
- *
+ * 
+ * @deprecated Use the `@anypoint-web-components/awc` module instead.
  */
 export class BottomSheetElement extends ArcOverlayMixin(LitElement) {
   static readonly styles: CSSResult;

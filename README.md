@@ -1,4 +1,8 @@
-# bottom-sheet element
+# DEPRECATED
+
+Use the `@anypoint-web-components/awc` module instead.
+
+-----
 
 Bottom sheets slide up from the bottom of the screen to reveal more content.
 

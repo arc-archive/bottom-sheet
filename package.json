@@ -1,7 +1,7 @@
 {
   "name": "@advanced-rest-client/bottom-sheet",
   "description": "Bottom sheets slide up from the bottom of the screen to reveal more content.",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "license": "Apache-2.0",
   "main": "index.js",
   "module": "index.js",
@@ -27,30 +27,30 @@
     "email": "arc@mulesoft.com"
   },
   "dependencies": {
-    "@advanced-rest-client/arc-overlay-mixin": "^1.1.7",
-    "@polymer/iron-a11y-announcer": "^3.1.0",
-    "lit-element": "^2.4.0"
+    "@advanced-rest-client/arc-overlay-mixin": "^1.2.0",
+    "@polymer/iron-a11y-announcer": "^3.2.0",
+    "lit-element": "^2.5.1"
   },
   "devDependencies": {
     "@advanced-rest-client/arc-demo-helper": "^2.2.6",
-    "@open-wc/eslint-config": "^4.2.0",
-    "@open-wc/testing": "^2.5.32",
+    "@open-wc/eslint-config": "^6.0.0",
+    "@open-wc/testing": "^3.0.1",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-item": "^3.0.0",
     "@polymer/paper-toast": "^3.0.1",
     "@polymer/paper-toggle-button": "^3.0.1",
-    "@web/dev-server": "^0.1.8",
-    "@web/test-runner": "^0.12.15",
-    "@web/test-runner-playwright": "^0.8.4",
-    "eslint": "^7.21.0",
-    "eslint-config-prettier": "^8.1.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
-    "sinon": "^9.2.4",
+    "@web/dev-server": "^0.1.25",
+    "@web/test-runner": "^0.13.20",
+    "@web/test-runner-playwright": "^0.8.8",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.2.3",
+    "sinon": "^11.1.2",
     "sinon-stub-promise": "^4.0.0",
-    "typescript": "^4.2.2",
+    "typescript": "^4.4.4",
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "scripts": {
